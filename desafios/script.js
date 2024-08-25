@@ -36,12 +36,12 @@ let dicas = 3; // quantidade de dicas
 let usouDica = 'false'; // variavel utilizado na função getHint(Dica)
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCOelUPm8hx-vFg0Cr5SjVv_mLrJcrn_Ys",
-    authDomain: "ete-john-quimica.firebaseapp.com",
-    projectId: "ete-john-quimica",
-    storageBucket: "ete-john-quimica.appspot.com",
-    messagingSenderId: "929948681469",
-    appId: "1:929948681469:web:8ace4d8e7063de3a1b2a94"
+    apiKey: "AIzaSyD2eNS_hDGUOcAUAmr5NFCUdWsjdelQHIE",
+    authDomain: "ete-fisica.firebaseapp.com",
+    projectId: "ete-fisica",
+    storageBucket: "ete-fisica.appspot.com",
+    messagingSenderId: "863092428014",
+    appId: "1:863092428014:web:c9b843a75a0f3e65edb7ff"
   };
 
 
@@ -52,96 +52,95 @@ const db = firebase.firestore();
 // Respostas do quiz e o sistema que carrega ele, facilmente acessado pelo Aluno caso tenha conhecimento necessario para tal ato
 const questions = [
     {
-        "question": "Qual é o elemento químico mais abundante no universo?",
-        "options": ["A) Oxigênio", "B) Carbono", "C) Hidrogênio", "D) Nitrogênio"],
+        "question": "O que é força?",
+        "options": ["A) A capacidade de um objeto de se mover", "B) A resistência ao movimento", "C) A interação que altera o estado de movimento de um objeto", "D) A quantidade de matéria em um objeto"],
         "answer": "C",
-        "hint": "É o elemento mais leve e o primeiro na tabela periódica."
+        "hint": "Está diretamente relacionada à segunda lei de Newton."
     },
     {
-        "question": "Qual é o nome do processo que separa os componentes de uma mistura homogênea?",
-        "options": ["A) Decantação", "B) Destilação", "C) Filtração", "D) Peneiração"],
+        "question": "Qual é a unidade de medida da força no Sistema Internacional (SI)?",
+        "options": ["A) Joule", "B) Newton", "C) Watt", "D) Pascal"],
         "answer": "B",
-        "hint": "É um método que envolve a vaporização e condensação dos componentes."
+        "hint": "É nomeada em homenagem ao cientista que formulou as leis do movimento."
     },
     {
-        "question": "O que é uma ligação iônica?",
-        "options": ["A) Ligação entre dois metais", "B) Ligação entre ametais", "C) Ligação entre átomos de oxigênio", "D) Ligação entre metais e ametais"],
-        "answer": "D",
-        "hint": "Ocorre entre átomos que possuem grande diferença de eletronegatividade."
-    },
-    {
-        "question": "Qual é a definição de átomo?",
-        "options": ["A) Um agrupamento de prótons e nêutrons", "B) A menor partícula de uma substância que ainda retém as suas propriedades químicas", "C) Um conjunto de moléculas", "D) A unidade básica das células"],
+        "question": "O que é inércia?",
+        "options": ["A) A força que mantém os objetos em movimento", "B) A tendência de um objeto resistir a mudanças em seu estado de movimento", "C) A aceleração de um objeto devido à gravidade", "D) A energia armazenada em um objeto"],
         "answer": "B",
-        "hint": "É a unidade fundamental da matéria."
+        "hint": "É um conceito central na primeira lei de Newton."
     },
     {
-        "question": "O que é uma reação química?",
-        "options": ["A) Uma mudança de estado físico", "B) Uma transformação de energia em matéria", "C) Um processo onde novas substâncias são formadas", "D) Uma mistura de substâncias sem alteração química"],
-        "answer": "C",
-        "hint": "Envolve a quebra e formação de ligações químicas."
+        "question": "O que é a aceleração?",
+        "options": ["A) A mudança na posição de um objeto ao longo do tempo", "B) A taxa de variação da velocidade de um objeto", "C) A força aplicada a um objeto", "D) A resistência ao movimento de um objeto"],
+        "answer": "B",
+        "hint": "É calculada pela razão entre a variação da velocidade e o tempo."
     },
     {
-        "question": "O que é uma solução?",
-        "options": ["A) Um composto puro", "B) Um tipo de elemento químico", "C) Uma mistura heterogênea", "D) Uma mistura homogênea de duas ou mais substâncias"],
+        "question": "O que é a velocidade?",
+        "options": ["A) A distância total percorrida por um objeto", "B) A razão entre a distância percorrida e o tempo", "C) A quantidade de força aplicada a um objeto", "D) A mudança na aceleração de um objeto"],
+        "answer": "B",
+        "hint": "É uma grandeza vetorial que possui direção e sentido."
+    },
+    {
+        "question": "Qual é a diferença entre velocidade escalar e velocidade vetorial?",
+        "options": ["A) Velocidade escalar não possui direção, enquanto velocidade vetorial possui", "B) Velocidade escalar é uma média, enquanto a vetorial é instantânea", "C) Velocidade escalar é sempre maior que a vetorial", "D) Velocidade escalar não depende da direção do movimento, enquanto a vetorial depende"],
         "answer": "D",
-        "hint": "Pode ser sólida, líquida ou gasosa."
+        "hint": "Uma das grandezas não depende da direção do movimento."
     },
     {
-        "question": "O que é o pH?",
-        "options": ["A) Concentração de sais em uma solução", "B) Quantidade de matéria em uma solução", "C) Medida de acidez ou basicidade de uma solução", "D) Energia total de uma substância"],
+        "question": "O que é trabalho em física?",
+        "options": ["A) A energia armazenada em um objeto", "B) O deslocamento causado por uma força aplicada", "C) A força necessária para mover um objeto", "D) A quantidade de energia dissipada por um sistema"],
+        "answer": "B",
+        "hint": "Está relacionado à força aplicada e ao deslocamento na mesma direção."
+    },
+    {
+        "question": "O que é energia cinética?",
+        "options": ["A) A energia armazenada em um objeto em repouso", "B) A energia associada ao movimento de um objeto", "C) A energia que não pode ser transformada", "D) A energia que é liberada durante uma reação química"],
+        "answer": "B",
+        "hint": "Depende da massa e da velocidade de um objeto."
+    },
+    {
+        "question": "O que é energia potencial?",
+        "options": ["A) A energia de movimento", "B) A energia armazenada devido à posição de um objeto", "C) A energia que um objeto tem ao atingir sua velocidade máxima", "D) A energia que não pode ser destruída"],
+        "answer": "B",
+        "hint": "Está relacionada à altura de um objeto em um campo gravitacional."
+    },
+    {
+        "question": "O que é gravidade?",
+        "options": ["A) A força que repulsa objetos com massa", "B) A resistência ao movimento em superfícies rugosas", "C) A força de atração entre dois corpos com massa", "D) A energia associada ao movimento dos planetas"],
         "answer": "C",
-        "hint": "Determina se uma solução é ácida, neutra ou básica."
+        "hint": "É a força responsável por manter os objetos ligados à Terra."
     },
     {
-        "question": "O que ocorre durante a eletrólise da água?",
-        "options": ["A) Separação da água em oxigênio e hidrogênio", "B) Transformação da água em gelo", "C) Evaporação da água", "D) Neutralização da água"],
+        "question": "O que é movimento uniforme?",
+        "options": ["A) Movimento em que a aceleração é constante", "B) Movimento em que a velocidade é constante", "C) Movimento em linha reta com velocidade variável", "D) Movimento circular com velocidade constante"],
+        "answer": "B",
+        "hint": "A velocidade do objeto não varia ao longo do tempo."
+    },
+    {
+        "question": "O que é movimento uniformemente variado (MUV)?",
+        "options": ["A) Movimento com aceleração nula", "B) Movimento com velocidade constante", "C) Movimento com aceleração constante", "D) Movimento em que a aceleração é constante e a velocidade varia uniformemente"],
+        "answer": "D",
+        "hint": "Nesse tipo de movimento, a velocidade varia linearmente com o tempo."
+    },
+    {
+        "question": "O que é a terceira lei de Newton?",
+        "options": ["A) A lei da inércia", "B) A lei da ação e reação", "C) A lei da gravidade", "D) A lei da conservação de energia"],
+        "answer": "B",
+        "hint": "Para toda ação, existe uma reação de mesma intensidade e direção, mas em sentidos opostos."
+    },
+    {
+        "question": "O que é energia mecânica?",
+        "options": ["A) A soma da energia cinética e potencial de um sistema", "B) A energia armazenada em combustíveis", "C) A energia gerada por motores", "D) A energia que se dissipa em forma de calor"],
         "answer": "A",
-        "hint": "É um processo que envolve corrente elétrica."
+        "hint": "É a energia total de um sistema considerando movimento e posição."
     },
     {
-        "question": "Qual é a principal característica dos metais?",
-        "options": ["A) Não conduzem eletricidade", "B) São sempre líquidos", "C) Conduzem eletricidade e calor", "D) São gases à temperatura ambiente"],
-        "answer": "C",
-        "hint": "Eles possuem alta condutividade e brilho metálico."
-    },
-    {
-        "question": "Qual é a fórmula química da água?",
-        "options": ["A) CO₂", "B) O₂", "C) H₂", "D) H₂O"],
+        "question": "O que é impulso?",
+        "options": ["A) A quantidade de movimento de um objeto", "B) A força aplicada sobre um objeto por um período de tempo", "C) A mudança na velocidade de um objeto", "D) A força aplicada a um objeto durante um intervalo de tempo, resultando em uma mudança na quantidade de movimento"],
         "answer": "D",
-        "hint": "É composta por dois átomos de hidrogênio e um de oxigênio."
-    },
-    {
-        "question": "O que são isótopos?",
-        "options": ["A) Átomos de elementos diferentes com o mesmo número de elétrons", "B) Átomos do mesmo elemento com diferente número de nêutrons", "C) Moléculas com diferentes números de prótons", "D) Moléculas com a mesma massa"],
-        "answer": "B",
-        "hint": "Eles têm o mesmo número de prótons, mas diferente massa atômica."
-    },
-    {
-        "question": "Qual é o principal gás responsável pelo efeito estufa?",
-        "options": ["A) Oxigênio (O₂)", "B) Nitrogênio (N₂)", "C) Hélio (He)", "D) Dióxido de carbono (CO₂)"],
-        "answer": "D",
-        "hint": "É um gás liberado na queima de combustíveis fósseis."
-    },
-    {
-        "question": "O que é uma reação de oxidação?",
-        "options": ["A) Reação em que uma substância perde elétrons", "B) Reação que ocorre sem alteração de elétrons", "C) Reação que forma gás oxigênio", "D) Reação em que uma substância ganha elétrons"],
-        "answer": "A",
-        "hint": "Está frequentemente associada à corrosão de metais."
-    },
-    {
-        "question": "O que é a tabela periódica?",
-        "options": ["A) Um gráfico que mostra as reações químicas", "B) Um sistema de classificação dos elementos químicos", "C) Uma lista de compostos químicos", "D) Um conjunto de fórmulas químicas"],
-        "answer": "B",
-        "hint": "Organiza os elementos com base em suas propriedades químicas."
-    },
-    {
-        "question": "O que é uma ligação covalente?",
-        "options": ["A) Transferência de elétrons entre átomos", "B) Compartilhamento de pares de elétrons entre átomos", "C) Ligação entre dois íons", "D) Ligação entre dois metais"],
-        "answer": "B",
-        "hint": "Ocorre principalmente entre átomos de ametais."
+        "hint": "Está relacionado à variação da quantidade de movimento."
     }
-    
     
 ];
 
